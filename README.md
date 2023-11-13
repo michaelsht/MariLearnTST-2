@@ -2,6 +2,9 @@
 
 MariLearn is an EduTech-based service designed to provide learning opportunities for students to enhance their skills. This service is built on an API architecture, illustrated through various microservices.
 
+## Endpoint URLs
+- [Swagger Documentation](http://4.236.214.73/docs)
+
 ## File Structure
 1. **config.py:** Application configuration file, including database connections and environment variables.
 2. **crud.py:** CRUD module containing functions for entities such as students, classes, instructors, and student interests.
@@ -83,6 +86,3 @@ MariLearn is an EduTech-based service designed to provide learning opportunities
 ## Docker Deployment
 1. Build the Docker image with the command `docker build -t marilearn-auth-service ..`.
 2. Run the Docker container with the command `docker run -p 80:80 marilearn-auth-service`.
-
-## Endpoint URLs
-- [Swagger Documentation](http://4.236.214.73/docs)
