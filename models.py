@@ -2,15 +2,6 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from config import Base, SessionLocal
 
-class Users (Base) : 
-    __tablename__ = 'users'
-
-    id = Column(Integer, primary_key = True, index = True)
-    username = Column(String, unique=True)
-    name = Column(String)
-    password = Column(String)
-    email = Column(String)
-
 class Student(Base):
     __tablename__ = "student"  # Mengganti "user" menjadi "student"
 
@@ -69,3 +60,14 @@ def get_recommendations(student_id):
         return recommended_classes
     finally:
         session.close()
+
+from passlib.hash import bcrypt
+class User:
+    def __init__(self, id, username, password_hash):
+        self.id = id
+        self.username = username
+        self.password_hash = password_hash
+
+    def verify_password(self, password):
+        return bcrypt.verify(password, self.password_hash)
+

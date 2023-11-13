@@ -1,0 +1,24 @@
+{
+    "user": [
+        {
+            "id": 1,
+            "username": "test",
+            "password_hash": "$2b$12$1bJLZBwbiWS5qbvVmjM4xezWHHJpHtzZ7U7lxtni59DFC659Q5CH2"
+        },
+        {
+            "id": 2,
+            "username": "mike",
+            "password_hash": "$2b$12$0LCurd.9cSNcUjTqAAcqjeJAXGSBxCxTQr6bXiSkCP5/YTgWMa2Ry"
+        },
+        {
+            "id": 3,
+            "username": "mike2",
+            "password_hash": "$2b$12$oYtBi0pP1Iz9BFkuQcUzZu8c7h62Y/KfDpj06HPMdL3YOPzMQCS/W"
+        },
+        {
+            "id": 4,
+            "username": "razan",
+            "password_hash": "$2b$12$TsZyS8CHtdemZ.2yvOlM3.SdQcRCHf4V6P/MM4MoPAmtdYCxECOeK"
+        }
+    ]
+}
