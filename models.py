@@ -3,16 +3,16 @@ from sqlalchemy.orm import relationship
 from config import Base, SessionLocal
 
 class Student(Base):
-    __tablename__ = "student"  # Mengganti "user" menjadi "student"
+    __tablename__ = "student"
 
-    student_id = Column(Integer, primary_key=True, index=True)  # Mengganti "user_id" menjadi "student_id"
+    student_id = Column(Integer, primary_key=True, index=True)
     username = Column(String)
     fullname = Column(String)
     email = Column(String)
     interest = Column(String)
 
     # Menyambungkan Student dengan minat mereka
-    interests = relationship("StudentInterest", back_populates="student")  # Mengganti "UserInterest" menjadi "StudentInterest"
+    interests = relationship("StudentInterest", back_populates="student")
 
 class Class(Base):
     __tablename__ = "class"
@@ -37,14 +37,14 @@ class Instructor(Base):
     classes = relationship("Class", back_populates="instructor")
 
 class StudentInterest(Base):
-    __tablename__ = "student_interest"  # Mengganti "user_interest" menjadi "student_interest"
+    __tablename__ = "student_interest" 
 
     id = Column(Integer, primary_key=True, index=True)
-    student_id = Column(Integer, ForeignKey('student.student_id'))  # Mengganti "user_id" menjadi "student_id"
+    student_id = Column(Integer, ForeignKey('student.student_id'))  
     interest = Column(String)
 
     # Menyambungkan StudentInterest dengan Student
-    student = relationship("Student", back_populates="interests")  # Mengganti "User" menjadi "Student"
+    student = relationship("Student", back_populates="interests")  
 
 # Fungsi untuk mengambil rekomendasi
 def get_recommendations(student_id):
