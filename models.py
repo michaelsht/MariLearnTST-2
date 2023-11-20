@@ -70,4 +70,3 @@ class User:
 
     def verify_password(self, password):
         return bcrypt.verify(password, self.password_hash)
-

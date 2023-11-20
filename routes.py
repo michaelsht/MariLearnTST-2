@@ -160,7 +160,7 @@ async def remove_student_interest_service(request: RequestStudentInterest, db: S
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
-@router.get("/students/recommendations/{student_id}")
+@router.get("/classes/recommendations/{student_id}")
 async def get_student_recommendations(student_id: int = Path(..., title="Student ID", description="The student's ID"), db: Session = Depends(get_db), user: User = Depends(get_current_user)):
     recommendations = crud.get_class_recommendations(db, student_id)
     class_schemas = [class_model_to_schema(class_) for class_ in recommendations]
@@ -171,3 +171,33 @@ async def get_instructor_recommendations(student_id: int = Path(..., title="Stud
     recommendations = crud.get_instructor_recommendations(db, student_id)
     instructor_schemas = [instructor_model_to_schema(instructor) for instructor in recommendations]
     return Response(status="Ok", code="200", message="Recommendations based on student's interest", result=instructor_schemas)
+
+@router.get("/students/classes/{student_id}")
+async def get_classes_taken_by_student_service(student_id: int = Path(..., title="Student ID", description="The student's ID"), db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    classes_taken = crud.get_classes_taken_by_student(db, student_id)
+    class_schemas = [class_model_to_schema(class_) for class_ in classes_taken]
+    return Response(status="Ok", code="200", message="Classes taken by the student", result=class_schemas)
+
+@router.get("/students/instructors/{student_id}")
+async def get_instructors_taught_by_student_service(student_id: int = Path(..., title="Student ID", description="The student's ID"), db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    instructors_taught = crud.get_instructors_taught_by_student(db, student_id)
+    instructor_schemas = [instructor_model_to_schema(instructor) for instructor in instructors_taught]
+    return Response(status="Ok", code="200", message="Instructors taught by the student", result=instructor_schemas)
+
+@router.get("/classes/{class_id}")
+async def get_class_info_service(class_id: int = Path(..., title="Class ID", description="The class's ID"), db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    class_info = crud.get_class_info(db, class_id)
+    if class_info:
+        class_schema = class_model_to_schema(class_info)
+        return Response(status="Ok", code="200", message="Class information", result=class_schema)
+    else:
+        raise HTTPException(status_code=404, detail="Class not found")
+
+@router.get("/instructors/{instructor_id}")
+async def get_instructor_info_service(instructor_id: int = Path(..., title="Instructor ID", description="The instructor's ID"), db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+    instructor_info = crud.get_instructor_info(db, instructor_id)
+    if instructor_info:
+        instructor_schema = instructor_model_to_schema(instructor_info)
+        return Response(status="Ok", code="200", message="Instructor information", result=instructor_schema)
+    else:
+        raise HTTPException(status_code=404, detail="Instructor not found")

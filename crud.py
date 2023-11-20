@@ -92,7 +92,7 @@ def get_class_recommendations(db: Session, student_id: int):
 
     # Mengambil kelas yang sesuai dengan minat mahasiswa
     recommended_classes = db.query(Class).join(Instructor, Instructor.instructor_id == Class.class_instructor).filter(
-        Class.class_instructor != student_id, Instructor.instructor_specialty.in_(student_interests)
+        Instructor.instructor_specialty.in_(student_interests)
     ).all()
 
     return recommended_classes
@@ -107,3 +107,23 @@ def get_instructor_recommendations(db: Session, student_id: int):
     recommended_instructors = db.query(Instructor).filter(Instructor.instructor_specialty.in_(student_interests)).all()
 
     return recommended_instructors
+
+# Fungsi untuk mendapatkan kelas yang diambil oleh seorang mahasiswa
+def get_classes_taken_by_student(db: Session, student_id: int):
+    return db.query(Class).join(Student, Class.class_id == Student.student_id).filter(
+        Student.student_id == student_id
+    ).all()
+
+# Fungsi untuk mendapatkan instruktur yang diajar oleh seorang mahasiswa
+def get_instructors_taught_by_student(db: Session, student_id: int):
+    return db.query(Instructor).join(Class, Class.class_instructor == Instructor.instructor_id).join(
+        Student, Class.class_id == Student.student_id
+    ).filter(Student.student_id == student_id).all()
+
+# Fungsi untuk mendapatkan informasi tentang sebuah kelas berdasarkan ID
+def get_class_info(db: Session, class_id: int):
+    return db.query(Class).filter(Class.class_id == class_id).first()
+
+# Fungsi untuk mendapatkan informasi tentang seorang instruktur berdasarkan ID
+def get_instructor_info(db: Session, instructor_id: int):
+    return db.query(Instructor).filter(Instructor.instructor_id == instructor_id).first()

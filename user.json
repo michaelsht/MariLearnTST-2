@@ -1,6 +1,5 @@
 {
-    "user": [
-        {
+    "user": [{
             "id": 1,
             "username": "test",
             "password_hash": "$2b$12$1bJLZBwbiWS5qbvVmjM4xezWHHJpHtzZ7U7lxtni59DFC659Q5CH2"
@@ -19,6 +18,11 @@
             "id": 4,
             "username": "razan",
             "password_hash": "$2b$12$TsZyS8CHtdemZ.2yvOlM3.SdQcRCHf4V6P/MM4MoPAmtdYCxECOeK"
+        },
+        {
+            "id": 5,
+            "username": "mike5",
+            "password_hash": "$2b$12$Hrv7nHXVakTezHJsfsm8t.Wz2GwrToARD7PKnMF.6vZWZwZjt5YX."
         }
     ]
 }
