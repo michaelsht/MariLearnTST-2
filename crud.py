@@ -127,3 +127,21 @@ def get_class_info(db: Session, class_id: int):
 # Fungsi untuk mendapatkan informasi tentang seorang instruktur berdasarkan ID
 def get_instructor_info(db: Session, instructor_id: int):
     return db.query(Instructor).filter(Instructor.instructor_id == instructor_id).first()
+
+def update_student_interest(db: Session, student_id: int, old_interest: str, new_interest: str):
+    db.query(StudentInterest).filter(StudentInterest.student_id == student_id, StudentInterest.interest == old_interest).update({"interest": new_interest})
+    db.commit()
+
+# Modify the existing update functions
+
+def update_student(db: Session, student_id: int, updated_data: dict):
+    db.query(Student).filter(Student.student_id == student_id).update(updated_data)
+    db.commit()
+
+def update_class(db: Session, class_id: int, updated_data: dict):
+    db.query(Class).filter(Class.class_id == class_id).update(updated_data)
+    db.commit()
+
+def update_instructor(db: Session, instructor_id: int, updated_data: dict):
+    db.query(Instructor).filter(Instructor.instructor_id == instructor_id).update(updated_data)
+    db.commit()
