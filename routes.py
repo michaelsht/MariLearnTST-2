@@ -254,6 +254,30 @@ async def remove_student_interest_service(request: RequestStudentInterest, db: S
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+@recommendations.post("/recommendations")      
+async def integrationrecommendations(activity: str, age: int, gender: str, height: int, max_rec : int, weather : str, weight: int):
+    global integratedToken
+    base_url = "https://bevbuddy.up.railway.app/recommendations"
+    headers = {
+        'accept': 'application/json',
+        'Authorization': f'Bearer {integratedToken}'
+    }
+    form_data = {
+        "activity": activity,
+        "age": age,
+        "gender": gender,
+        "height": height,
+        "max_rec": max_rec,
+        "weather": weather,
+        "weight": weight
+    }
+    response = requests.post(base_url, headers=headers, json=form_data)
+    if response.status_code == 200:
+        data = response.json()
+        return data
+    else:
+        return {'Error': response.status_code, 'Detail': response.text}
+    
 @recommendations.get("/classes/recommendations/{student_id}")
 async def get_student_recommendations(student_id: int = Path(..., title="Student ID", description="The student's ID"), db: Session = Depends(get_db)):
     recommendations = crud.get_class_recommendations(db, student_id)
@@ -349,27 +373,3 @@ async def patch_instructor_service(
         return Response(status="Ok", code="200", message="Instructor patched successfully", result=None)
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
-
-@recommendations.post("/recommendations")      
-async def integrationrecommendations(activity: str, age: int, gender: str, height: int, max_rec : int, weather : str, weight: int):
-    global integratedToken
-    base_url = "https://bevbuddy.up.railway.app/recommendations"
-    headers = {
-        'accept': 'application/json',
-        'Authorization': f'Bearer {integratedToken}'
-    }
-    form_data = {
-        "activity": activity,
-        "age": age,
-        "gender": gender,
-        "height": height,
-        "max_rec": max_rec,
-        "weather": weather,
-        "weight": weight
-    }
-    response = requests.post(base_url, headers=headers, json=form_data)
-    if response.status_code == 200:
-        data = response.json()
-        return data
-    else:
-        return {'Error': response.status_code, 'Detail': response.text}
