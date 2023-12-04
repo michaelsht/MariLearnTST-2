@@ -1,6 +1,6 @@
 // pages/Movie.tsx
 import React from 'react';
-import ClassRecommendationTable from '@/components/FoodsDrinksRecommendationTable';
+import FoodsDrinksRecommendationTable from '@/components/FoodsDrinksRecommendationTable';
 
 const Movie: React.FC = () => {
   return (
@@ -15,7 +15,7 @@ const Movie: React.FC = () => {
 
       <div className="mt-8 w-5/6 pt-4">
         <h2 className="flex text-2xl font-bold mb-4 justify-center items-center">Foods & Drinks Recommendations Table</h2>
-          <ClassRecommendationTable />
+          <FoodsDrinksRecommendationTable />
       </div>
     </div>
   );

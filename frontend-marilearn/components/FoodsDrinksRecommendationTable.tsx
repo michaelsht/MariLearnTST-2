@@ -1,8 +1,5 @@
 "use client"
-// components/FoodsDrinksRecommendationTable.tsx
-// components/FoodsDrinksRecommendationTable.tsx
 import React, { useState } from 'react';
-import axios from 'axios';
 
 interface FoodDrinkData {
   name: string;
@@ -27,16 +24,28 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/recommendations', {
-        activity,
-        age,
-        gender,
-        height,
-        max_rec,
-        weather,
-        weight,
+      const response = await fetch('http://localhost:8001/recommendations', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          activity,
+          age,
+          gender,
+          height,
+          max_rec,
+          weather,
+          weight,
+        }),
       });
-      setRecommendationData(response.data);
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setRecommendationData(data);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
     }
@@ -124,7 +133,7 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {recommendationData.map((foodDrink) => (
+          {recommendationData && recommendationData.map((foodDrink) => (
             <tr key={foodDrink.name}>
               <td className="border border-gray-300 px-4 py-2">{foodDrink.name}</td>
               <td className="border border-gray-300 px-4 py-2">{foodDrink.description}</td>

@@ -254,29 +254,45 @@ async def remove_student_interest_service(request: RequestStudentInterest, db: S
     except Exception as e:
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
+def get_user_token(username: str, password: str):
+    url = 'https://bevbuddy.up.railway.app/login'
+    data = {
+        "username": "cilla567",
+        "password": "cilla567"
+    }
+    response = requests.post(url, json=data)
+
+    if response.status_code == 200:
+        try:
+            result = response.json()
+            user_token = result.get('token')
+            return user_token
+        except ValueError as e:
+            print("Invalid JSON format in response:", response.text)
+            return None
+    else:
+        print(f"Failed to get token. Status code: {response.status_code}, Detail: {response.text}")
+        return None
+
 @recommendations.post("/recommendations")      
-async def integrationrecommendations(activity: str, age: int, gender: str, height: int, max_rec : int, weather : str, weight: int):
-    global integratedToken
+async def integrationrecommendations(request_data: dict):
     base_url = "https://bevbuddy.up.railway.app/recommendations"
+    username = "cilla567"
+    password = "cilla567"
+    token = get_user_token(username, password)
+    
     headers = {
         'accept': 'application/json',
-        'Authorization': f'Bearer {integratedToken}'
+        'Authorization': f'Bearer {token}'
     }
-    form_data = {
-        "activity": activity,
-        "age": age,
-        "gender": gender,
-        "height": height,
-        "max_rec": max_rec,
-        "weather": weather,
-        "weight": weight
-    }
-    response = requests.post(base_url, headers=headers, json=form_data)
+    
+    response = requests.post(base_url, headers=headers, json=request_data)
+    
     if response.status_code == 200:
         data = response.json()
         return data
     else:
-        return {'Error': response.status_code, 'Detail': response.text}
+        raise HTTPException(status_code=response.status_code, detail=response.text)
     
 @recommendations.get("/classes/recommendations/{student_id}")
 async def get_student_recommendations(student_id: int = Path(..., title="Student ID", description="The student's ID"), db: Session = Depends(get_db)):

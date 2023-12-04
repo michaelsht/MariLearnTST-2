@@ -94,6 +94,16 @@
             "id": 19,
             "username": "cilla100",
             "password_hash": "$2b$12$Xy3BRf1.OH3pO2ueSeshlOJp3v.PAfiynxCvgLnTHEEqxdd1s/.4q"
+        },
+        {
+            "id": 20,
+            "username": "cilla567",
+            "password_hash": "$2b$12$39/WlLDaalNAk5J2xHuu4uO36bKc4CvLe436EOJKKlNFQL9P72k6W"
+        },
+        {
+            "id": 21,
+            "username": "oncar750",
+            "password_hash": "$2b$12$RJh5PBRCMpSCvAHU6MyvOekYeNeLrSBYFz0ABpf1KHV0.kISv/kje"
         }
     ]
 }

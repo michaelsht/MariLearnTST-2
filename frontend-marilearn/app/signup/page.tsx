@@ -14,7 +14,6 @@ const Signup: React.FC = () => {
   const handleSignup = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    // Validasi kolom username, password, fullname, dan email
     if (!username || !password || !fullname || !email) {
       setError('All fields are required');
       return;
@@ -23,7 +22,7 @@ const Signup: React.FC = () => {
     setIsSigningUp(true);
 
     try {
-      const response = await fetch('http://localhost:8000/user', {
+      const response = await fetch('http://localhost:8001/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
