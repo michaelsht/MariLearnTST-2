@@ -13,18 +13,31 @@ interface FoodDrinkData {
 }
 
 const FoodsDrinksRecommendationTable: React.FC = () => {
+  const [studentId, setStudentId] = useState<number | undefined>();
   const [activity, setActivity] = useState<string>('');
-  const [age, setAge] = useState<number | undefined>();
   const [gender, setGender] = useState<string>('');
-  const [height, setHeight] = useState<number | undefined>();
   const [max_rec, setMaxRec] = useState<number | undefined>();
   const [weather, setWeather] = useState<string>('');
-  const [weight, setWeight] = useState<number | undefined>();
   const [recommendationData, setRecommendationData] = useState<FoodDrinkData[]>([]);
 
   const handleSearch = async () => {
     try {
-      const response = await fetch('http://localhost:8001/recommendations', {
+      let age, weight, height;
+
+      // Set values based on student_id
+      if (studentId !== undefined) {
+        if (studentId <= 10) {
+          age = 20;
+          weight = 60;
+          height = 165;
+        } else if (studentId > 10) {
+          age = 25;
+          weight = 65;
+          height = 170;
+        }
+      }
+
+      const response = await fetch('https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -56,17 +69,17 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
       <div className="grid grid-cols-1 gap-4">
         <div className="grid grid-cols-2 gap-4">
           <input
+            type="number"
+            placeholder="Student ID"
+            value={studentId || undefined}
+            onChange={(e) => setStudentId(parseInt(e.target.value, 10) || undefined)}
+            className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
+          />
+          <input
             type="text"
             placeholder="Activity"
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
-            className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
-          />
-          <input
-            type="number"
-            placeholder="Age"
-            value={age || undefined}
-            onChange={(e) => setAge(parseInt(e.target.value, 10) || undefined)}
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
         </div>
@@ -80,15 +93,6 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
           />
           <input
             type="number"
-            placeholder="Height"
-            value={height || undefined}
-            onChange={(e) => setHeight(parseInt(e.target.value, 10) || undefined)}
-            className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <input
-            type="number"
             placeholder="Max Recommendation"
             value={max_rec || undefined}
             onChange={(e) => setMaxRec(parseInt(e.target.value, 10) || undefined)}
@@ -99,15 +103,6 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
             placeholder="Weather"
             value={weather}
             onChange={(e) => setWeather(e.target.value)}
-            className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
-          />
-        </div>
-        <div className="grid grid-cols-2 gap-4">
-          <input
-            type="number"
-            placeholder="Weight"
-            value={weight || undefined}
-            onChange={(e) => setWeight(parseInt(e.target.value, 10) || undefined)}
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
           <button

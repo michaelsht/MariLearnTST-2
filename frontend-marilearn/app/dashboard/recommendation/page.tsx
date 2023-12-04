@@ -1,9 +1,31 @@
 // pages/Recommendation.tsx
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import ClassRecommendationTable from '@/components/ClassRecommendationTable';
 import InstructorRecommendationTable from '@/components/InstructorRecommendationTable';
 
 const Recommendation: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      window.location.href = '/';
+    }
+  }, []);
+
+  if (!isAuthenticated) {
+    return <div>Unauthorized</div>;
+  }
+
   return (
     <div className="flex flex-col items-center mt-10 pt-10">
       <h1 className="text-4xl font-bold mb-6">Rekomendasi Konten</h1>
@@ -15,10 +37,8 @@ const Recommendation: React.FC = () => {
       </div>
 
       <div className="mt-8 w-5/6 pt-4">
-        {/* Konten spesifik untuk halaman Recommendation */}
           <ClassRecommendationTable />
           <InstructorRecommendationTable />
-        {/* Tambahkan lebih banyak konten spesifik recommendation sesuai kebutuhan */}
       </div>
     </div>
   );

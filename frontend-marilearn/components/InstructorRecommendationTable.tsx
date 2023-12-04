@@ -15,7 +15,7 @@ const InstructorRecommendationTable: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`http://localhost:8001/instructors/recommendations/${studentId}`);
+      const response = await axios.get(`https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/instructors/recommendations/${studentId}`);
       setRecommendationData(response.data.result);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);

@@ -42,12 +42,10 @@ const Signup: React.FC = () => {
       if (response.ok) {
         console.log('User created successfully');
     
-        // Redirect to the login page after successful signup
         window.location.href = '/';
       } else {
-        // Handle error response
         const errorMessages = responseData.detail || [{ msg: 'An unexpected error occurred' }];
-        setError(errorMessages[0].msg); // Extract the 'msg' property
+        setError(errorMessages[0].msg);
         setIsResponseOK(false);
       }
     } catch (error) {

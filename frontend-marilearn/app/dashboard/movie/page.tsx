@@ -1,8 +1,29 @@
-// pages/Movie.tsx
-import React from 'react';
+"use client"
+import React, { useEffect, useState } from 'react';
 import FoodsDrinksRecommendationTable from '@/components/FoodsDrinksRecommendationTable';
 
 const Movie: React.FC = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    window.location.href = '/';
+  };
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+
+    if (token) {
+      setIsAuthenticated(true);
+    } else {
+      window.location.href = '/';
+    }
+  }, []);
+
+  if (!isAuthenticated) {
+    return <div>Unauthorized</div>;
+  }
+  
   return (
     <div className="flex flex-col items-center mt-10 pt-10">
       <h1 className="text-4xl font-bold mb-6">Foods & Drinks Recommendation</h1>

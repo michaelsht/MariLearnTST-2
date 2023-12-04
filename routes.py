@@ -199,7 +199,7 @@ async def create_student_service(request: RequestStudent, db: Session = Depends(
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 @students.get("/students/")
-async def get_students(skip: int = 0, limit: int = 100, db: Session = Depends(get_db), user: User = Depends(get_current_user)):
+async def get_students(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     students = crud.get_students(db, skip, limit)
     student_schemas = [student_model_to_schema(student) for student in students]
     return Response(status="Ok", code="200", message="Success fetch all students", result=student_schemas)

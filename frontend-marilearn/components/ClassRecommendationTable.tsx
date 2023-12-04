@@ -14,7 +14,7 @@ const ClassRecommendationTable: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`http://localhost:8001/classes/recommendations/${studentId}`, {
+      const response = await fetch(`https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/classes/recommendations/${studentId}`, {
         method: 'GET',
       });
       const data = await response.json();

@@ -13,9 +13,9 @@ const Login: React.FC = () => {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoggingIn(true);
-  
+
     try {
-      const response = await fetch('http://localhost:8001/token', {
+      const response = await fetch('https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
