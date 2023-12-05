@@ -104,6 +104,21 @@
             "id": 21,
             "username": "oncar750",
             "password_hash": "$2b$12$RJh5PBRCMpSCvAHU6MyvOekYeNeLrSBYFz0ABpf1KHV0.kISv/kje"
+        },
+        {
+            "id": 22,
+            "username": "michaelsihotang",
+            "password_hash": "$2b$12$YKxtp8WkMRbf0Bz6xuWkHubFbERB/wFKt.699nblYojdLgX1yUWcK"
+        },
+        {
+            "id": 23,
+            "username": "mic12345",
+            "password_hash": "$2b$12$3NlxfihDJgCB1HnKlD4Q4OK0Zdob9Kq1PVs4oLcsAQ.VdVyBculP6"
+        },
+        {
+            "id": 24,
+            "username": "haquhara",
+            "password_hash": "$2b$12$Fx/9J4Ou/PmwnQQ20MjnduVVjj4tbBFWQfw3h7ol0CftDk6pJCNA6"
         }
     ]
 }

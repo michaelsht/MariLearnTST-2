@@ -14,7 +14,7 @@ const ClassRecommendationTable: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(`https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/classes/recommendations/${studentId}`, {
+      const response = await fetch(`http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/classes/recommendations/${studentId}`, {
         method: 'GET',
       });
       const data = await response.json();
@@ -32,8 +32,11 @@ const ClassRecommendationTable: React.FC = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center">Class Recommendation Table</h1>
-
+      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center text-green-600">Class Recommendation Table</h1>
+      <li>Masukkan ID Student untuk mencari class yang sesuai dengan minat student tersebut</li>
+      <li>Tekan tombol search untuk melakukan pencarian</li>
+      <li>Tunggu sebentar</li>
+      <li>Daftar class yang direkomendasikan akan ditampilkan pada tabel</li>
       <div className="mb-4 flex justify-end items-center">
         <label htmlFor="studentId" className="mr-2">
           Student ID:

@@ -37,7 +37,7 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
         }
       }
 
-      const response = await fetch('https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/recommendations', {
+      const response = await fetch('http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -113,6 +113,7 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
           </button>
         </div>
       </div>
+
 
       <table className="min-w-full border border-gray-300 mt-4">
         <thead>

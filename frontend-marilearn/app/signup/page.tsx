@@ -22,7 +22,7 @@ const Signup: React.FC = () => {
     setIsSigningUp(true);
 
     try {
-      const response = await fetch('http://localhost:8001/user', {
+      const response = await fetch('http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

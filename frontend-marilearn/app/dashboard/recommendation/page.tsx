@@ -28,7 +28,7 @@ const Recommendation: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center mt-10 pt-10">
-      <h1 className="text-4xl font-bold mb-6">Rekomendasi Konten</h1>
+      <h1 className="text-4xl font-bold mb-6 text-blue-700">Class and Instructor Recommendation</h1>
 
       <div className="flex space-x-4 pt-4">
         <a href="/dashboard" className="bg-blue-500 text-white py-2 px-4 rounded">Manajemen Edutech</a>
@@ -37,6 +37,7 @@ const Recommendation: React.FC = () => {
       </div>
 
       <div className="mt-8 w-5/6 pt-4">
+          <p className="text-justify">MariLearn menyediakan Class Recommendation untuk memberikan saran kelas berdasarkan minat siswa, serta Instructor Recommendation untuk merekomendasikan pengajar yang sesuai dengan minat dan Pengajar.</p>
           <ClassRecommendationTable />
           <InstructorRecommendationTable />
       </div>

@@ -20,7 +20,7 @@ const StudentList: React.FC = () => {
 
   const fetchStudentData = async () => {
     try {
-      const response = await axios.get('https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/students/');
+      const response = await axios.get('http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/students/');
       setStudentData(response.data.result);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
@@ -29,7 +29,7 @@ const StudentList: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center">Student List</h1>
+      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center text-yellow-500">Student List</h1>
 
       <table className="min-w-full border border-gray-300">
         <thead>

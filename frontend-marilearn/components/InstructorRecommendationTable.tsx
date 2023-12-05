@@ -15,7 +15,7 @@ const InstructorRecommendationTable: React.FC = () => {
 
   const handleSearch = async () => {
     try {
-      const response = await axios.get(`https://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/instructors/recommendations/${studentId}`);
+      const response = await axios.get(`http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/instructors/recommendations/${studentId}`);
       setRecommendationData(response.data.result);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
@@ -24,7 +24,11 @@ const InstructorRecommendationTable: React.FC = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center">Instructor Recommendation Table</h1>
+      <h1 className="flex text-2xl font-bold mb-4 justify-center items-center text-yellow-500">Instructor Recommendation Table</h1>
+      <li>Masukkan ID Student untuk mencari instructor yang sesuai dengan minat student tersebut serta keahlian instructor</li>
+      <li>Tekan tombol search untuk melakukan pencarian</li>
+      <li>Tunggu sebentar</li>
+      <li>Daftar instructor yang direkomendasikan akan ditampilkan pada tabel</li>
 
       <div className="mb-4 flex justify-end items-center">
         <label htmlFor="studentId" className="mr-2">
