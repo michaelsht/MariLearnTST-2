@@ -37,7 +37,7 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
         }
       }
 
-      const response = await fetch('https://tubestst.azurewebsites.net/recommendations', {
+      const response = await fetch('http://marilearnedu.gjeyefeubba0fndn.eastus.azurecontainer.io/recommendations', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

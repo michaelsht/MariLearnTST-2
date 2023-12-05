@@ -15,7 +15,7 @@ const Login: React.FC = () => {
     setIsLoggingIn(true);
 
     try {
-      const response = await fetch('https://tubestst.azurewebsites.net/token', {
+      const response = await fetch('https://marilearntstedutech.azurewebsites.net/token', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',

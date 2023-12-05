@@ -25,7 +25,7 @@ const CreateStudentForm: React.FC = () => {
       // Mendapatkan token akses dari local storage
       const accessToken = localStorage.getItem('access_token');
 
-      const response = await fetch('https://tubestst.azurewebsites.net/students/create', {
+      const response = await fetch('https://marilearntstedutech.azurewebsites.net/students/create', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

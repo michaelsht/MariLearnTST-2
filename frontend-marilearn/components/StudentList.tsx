@@ -20,7 +20,7 @@ const StudentList: React.FC = () => {
 
   const fetchStudentData = async () => {
     try {
-      const response = await axios.get('https://tubestst.azurewebsites.net/students/');
+      const response = await axios.get('https://marilearntstedutech.azurewebsites.net/students/');
       setStudentData(response.data.result);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);

@@ -116,8 +116,8 @@ async def create_user(user_info: dict):
     user = jsonable_encoder(User(id=user_id, username=username, password_hash=bcrypt.hash(password)))
     data['user'].append(user)
 
-    # url = 'https://bevbuddy.up.railway.app/register'
-    url = 'http://localhost:8000/register'
+    url = 'https://bevbuddy.up.railway.app/register'
+    # url = 'http://localhost:8000/register'
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json'
@@ -166,8 +166,7 @@ async def create_user(username: str, fullname: str, password: str, email: str):
     user = jsonable_encoder(User(id=user_id, username=username, password_hash=bcrypt.hash(password)))
     data['user'].append(user)
 
-    url = 'http://localhost:8000/register'
-    # url = 'https://bevbuddy.up.railway.app/register'
+    url = 'https://bevbuddy.up.railway.app/register'
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json'
@@ -258,7 +257,7 @@ async def remove_student_interest_service(request: RequestStudentInterest, db: S
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 def get_user_token(username: str, password: str):
-    url = 'http://localhost:8000/login'
+    url = 'https://bevbuddy.up.railway.app/login'
     data = {
         "username": "cilla567",
         "password": "cilla567"
@@ -279,7 +278,7 @@ def get_user_token(username: str, password: str):
 
 @recommendations.post("/recommendations")      
 async def integrationrecommendations(request_data: dict):
-    base_url = "http://localhost:8000/recommendations"
+    base_url = "https://bevbuddy.up.railway.app/recommendations"
     username = "cilla567"
     password = "cilla567"
     token = get_user_token(username, password)
