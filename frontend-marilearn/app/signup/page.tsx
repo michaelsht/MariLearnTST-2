@@ -102,7 +102,7 @@ const Signup: React.FC = () => {
             name="fullname"
             value={fullname}
             onChange={(e) => setFullname(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text_black"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
         </div>
 
