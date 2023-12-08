@@ -43,7 +43,7 @@ const Login: React.FC = () => {
   };
   
   return (
-    <div className="flex flex-col items-center mt-10 pt-10 bg-black">
+    <div className="flex flex-col items-center mt-10 pt-10 py-40">
       <div className="mb-8">
         <Image src="/logo.png" alt="Logo" width={200} height={200} />
       </div>
@@ -59,7 +59,7 @@ const Login: React.FC = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
 
@@ -73,7 +73,7 @@ const Login: React.FC = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
           />
         </div>
 
