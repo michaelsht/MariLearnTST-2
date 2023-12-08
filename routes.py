@@ -65,7 +65,7 @@ async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail='Invalid username or password'
         )
-    url = 'https://bevbuddy.up.railway.app/login'
+    url = 'https://bevbuddy--c3oinea.thankfulbush-47818fd3.southeastasia.azurecontainerapps.io/login'
     # url = 'http://localhost:8000/login'
     data = {
         'username': form_data.username,
@@ -116,7 +116,7 @@ async def create_user(user_info: dict):
     user = jsonable_encoder(User(id=user_id, username=username, password_hash=bcrypt.hash(password)))
     data['user'].append(user)
 
-    url = 'https://bevbuddy.up.railway.app/register'
+    url = 'https://bevbuddy--c3oinea.thankfulbush-47818fd3.southeastasia.azurecontainerapps.io/register'
     # url = 'http://localhost:8000/register'
     headers = {
         'accept': 'application/json',
@@ -166,7 +166,7 @@ async def create_user(username: str, fullname: str, password: str, email: str):
     user = jsonable_encoder(User(id=user_id, username=username, password_hash=bcrypt.hash(password)))
     data['user'].append(user)
 
-    url = 'https://bevbuddy.up.railway.app/register'
+    url = 'https://bevbuddy--c3oinea.thankfulbush-47818fd3.southeastasia.azurecontainerapps.io/register'
     headers = {
         'accept': 'application/json',
         'Content-Type': 'application/json'
@@ -257,7 +257,7 @@ async def remove_student_interest_service(request: RequestStudentInterest, db: S
         raise HTTPException(status_code=500, detail="Internal Server Error")
 
 def get_user_token(username: str, password: str):
-    url = 'https://bevbuddy.up.railway.app/login'
+    url = 'https://bevbuddy--c3oinea.thankfulbush-47818fd3.southeastasia.azurecontainerapps.io/login'
     data = {
         "username": "cilla567",
         "password": "cilla567"
@@ -278,7 +278,7 @@ def get_user_token(username: str, password: str):
 
 @recommendations.post("/recommendations")      
 async def integrationrecommendations(request_data: dict):
-    base_url = "https://bevbuddy.up.railway.app/recommendations"
+    base_url = "https://bevbuddy--c3oinea.thankfulbush-47818fd3.southeastasia.azurecontainerapps.io/recommendations"
     username = "cilla567"
     password = "cilla567"
     token = get_user_token(username, password)
