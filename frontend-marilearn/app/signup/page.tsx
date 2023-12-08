@@ -74,7 +74,7 @@ const Signup: React.FC = () => {
             name="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
         </div>
 
@@ -88,7 +88,7 @@ const Signup: React.FC = () => {
             name="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
         </div>
 
@@ -102,7 +102,7 @@ const Signup: React.FC = () => {
             name="fullname"
             value={fullname}
             onChange={(e) => setFullname(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text_black"
           />
         </div>
 
@@ -116,7 +116,7 @@ const Signup: React.FC = () => {
             name="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-1 p-2 w-full border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
         </div>
 
