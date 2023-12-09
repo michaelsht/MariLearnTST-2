@@ -76,21 +76,33 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
           <input
-            type="text"
+            list="activityOptions"
             placeholder="Activity"
             value={activity}
             onChange={(e) => setActivity(e.target.value)}
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
+
+          <datalist id="activityOptions">
+            <option value="sedentary" />
+            <option value="lightly_active" />
+            <option value="moderately_active" />
+            <option value="very_active" />
+            <option value="extra_active" />
+          </datalist>
         </div>
         <div className="grid grid-cols-2 gap-4">
           <input
-            type="text"
+            list="genderOptions"
             placeholder="Gender"
             value={gender}
             onChange={(e) => setGender(e.target.value)}
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
+          <datalist id="genderOptions">
+            <option value="Male" />
+            <option value="Female" />
+          </datalist>
           <input
             type="number"
             placeholder="Max Recommendation"
@@ -99,12 +111,16 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
           <input
-            type="text"
+            list="weatherOptions"
             placeholder="Weather"
             value={weather}
             onChange={(e) => setWeather(e.target.value)}
             className="p-2 border rounded-md focus:outline-none focus:ring focus:border-blue-300 text-black"
           />
+          <datalist id="weatherOptions">
+            <option value="yes" />
+            <option value="no" />
+          </datalist>
           <button
             className="bg-blue-500 text-white p-2 rounded-md ml-2"
             onClick={handleSearch}
