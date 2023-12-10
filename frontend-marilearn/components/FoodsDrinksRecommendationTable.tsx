@@ -19,8 +19,10 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
   const [max_rec, setMaxRec] = useState<number | undefined>();
   const [weather, setWeather] = useState<string>('');
   const [recommendationData, setRecommendationData] = useState<FoodDrinkData[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSearch = async () => {
+    setIsLoading(true);
     try {
       let age, weight, height;
 
@@ -59,6 +61,7 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
 
       const data = await response.json();
       setRecommendationData(data);
+      setIsLoading(false);
     } catch (error) {
       console.error('An error occurred while fetching data:', error);
     }
@@ -125,8 +128,9 @@ const FoodsDrinksRecommendationTable: React.FC = () => {
             className="bg-blue-500 text-white p-2 rounded-md ml-2"
             onClick={handleSearch}
           >
-            Search
+          {isLoading ? 'Searching...' : 'Search'}
           </button>
+
         </div>
       </div>
 
